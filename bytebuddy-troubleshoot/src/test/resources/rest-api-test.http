@@ -1,0 +1,80 @@
+###
+GET http://localhost:8083/accounts/1
+
+<> 2026-01-23T095525.200.json
+<> 2026-01-23T095439.200.json
+
+###
+POST http://localhost:8083/accounts
+Content-Type: application/json
+
+{
+  "num": "80005",
+  "type": "saving",
+  "openOn": "2022-01-01"
+}
+
+<> 2026-01-25T014333.201.json
+<> 2026-01-25T011408.201.json
+<> 2026-01-25T011354.201.json
+<> 2026-01-25T010849.500.json
+<> 2026-01-25T010359.500.json
+<> 2026-01-23T104756.201.json
+<> 2026-01-23T104739.201.json
+<> 2026-01-23T104725.201.json
+<> 2026-01-23T104555.201.json
+<> 2026-01-23T104517.201.json
+<> 2026-01-23T094343.500.json
+
+###
+GET http://localhost:8083/accounts
+Content-Type: application/json
+
+
+<> 2026-01-25T014342.200.json
+<> 2026-01-25T014327.200.json
+<> 2026-01-25T014321.200.json
+<> 2026-01-25T011414.200.json
+<> 2026-01-23T151111.200.json
+<> 2026-01-23T150937.200.json
+
+###
+PATCH http://localhost:8083/accounts/1?accountType=usd-travel
+
+<> 2026-01-23T151054.200.json
+
+###
+GET http://localhost:8083/clients
+
+<> 2026-01-25T014310.200.json
+<> 2026-01-25T011758.200.json
+<> 2026-01-25T011604.200.json
+<> 2026-01-25T011443.200.json
+
+###
+POST http://localhost:8083/clients
+Content-Type: application/json
+
+{
+  "firstName": "George",
+  "lastName": "Zhou",
+  "dob": "1988-08-18"
+}
+
+###
+POST http://localhost:8083/clients
+Content-Type: application/json
+
+{
+  "firstName": "Angela",
+  "lastName": "Zhou",
+  "dob": "2006-06-02"
+}
+
+<> 2026-01-25T011749.201.json
+<> 2026-01-25T011559.201.json
+
+###
+GET http://localhost:8083/diagnostic/emf-info
+
+<> 2026-01-25T014435.200.json
