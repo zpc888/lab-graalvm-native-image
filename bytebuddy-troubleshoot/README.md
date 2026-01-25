@@ -43,3 +43,12 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 ```
 
 ### Multiple DataSources
+
+Based on [Spring Framework - Ahead of Time Optimizations](https://docs.spring.io/spring-framework/reference/core/aot.html#aot.bestpractices.jpa)
+and [graalvm native AOT database issue](https://github.com/DigitalMediageek/aot-database-issue/tree/main), changing
+to specifically ensure the entity scanning occurs ahead of time, `PersistenceManagedTypes` is declared and used by 
+entity manager factory bean.
+
+It works now even with multiple data sources. It should work for single data sources.
+
+Also for Spring boot 3.5.10, it should work more smoothly.

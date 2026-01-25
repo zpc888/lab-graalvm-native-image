@@ -1,4 +1,4 @@
-package prot.graalvm.tr.account;
+package prot.graalvm.tr.client;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -27,65 +27,65 @@ import javax.sql.DataSource;
 @Configuration(proxyBeanMethods = false)
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "prot.graalvm.tr.account",
-        entityManagerFactoryRef = AccountDatabaseConfig.ACCOUNT_ENTITY_MANAGER_FACTORY,
-        transactionManagerRef = AccountDatabaseConfig.ACCOUNT_TRANSACTION_MANAGER
+        basePackages = "prot.graalvm.tr.client",
+        entityManagerFactoryRef = ClientDatabaseConfig.CLIENT_ENTITY_MANAGER_FACTORY,
+        transactionManagerRef = ClientDatabaseConfig.CLIENT_TRANSACTION_MANAGER
 )
-public class AccountDatabaseConfig {
-//    public static final String ACCOUNT_ENTITY_MANAGER_FACTORY = "accountEntityManagerFactory";
-//    public static final String ACCOUNT_TRANSACTION_MANAGER = "accountTransactionManager";
-    public static final String ACCOUNT_ENTITY_MANAGER_FACTORY = "account-db.em-factory";
-    public static final String ACCOUNT_TRANSACTION_MANAGER = "account-db.tx-manager";
+public class ClientDatabaseConfig {
+//    public static final String CLIENT_ENTITY_MANAGER_FACTORY = "clientEntityManagerFactory";
+//    public static final String CLIENT_TRANSACTION_MANAGER = "clientTransactionManager";
+    public static final String CLIENT_ENTITY_MANAGER_FACTORY = "client-db.em-factory";
+    public static final String CLIENT_TRANSACTION_MANAGER = "client-db.tx-manager";
 
-    @Bean("accountDbProps")
+    @Bean("clientDbProps")
     @Primary
-    @ConfigurationProperties(prefix = "account.datasource")
-    HikariConfig accountDbProps() {
+    @ConfigurationProperties(prefix = "client.datasource")
+    HikariConfig clientDbProps() {
         return new HikariConfig();
     }
 
-    @Bean("accountJpaProps")
+    @Bean("clientJpaProps")
     @Primary
-    @ConfigurationProperties(prefix = "account")
+    @ConfigurationProperties(prefix = "client")
     JpaProperties jpaProperties() {
         return new JpaProperties();
     }
 
-    @Bean("account-db.data-source")
+    @Bean("client-db.data-source")
     @Primary
-    DataSource graal1DataSource(@Qualifier("accountDbProps") HikariConfig hikariConfig) {
+    DataSource graal1DataSource(@Qualifier("clientDbProps") HikariConfig hikariConfig) {
         return new HikariDataSource(hikariConfig);
     }
 
-    @Bean("accountEMFB")
+    @Bean("clientEMFB")
     @Primary
     EntityManagerFactoryBuilder graal1EMFB(ObjectProvider<PersistenceUnitManager> persistenceUnitManager,
-                                           @Qualifier("accountJpaProps") JpaProperties jpaProperties) {
+                                           @Qualifier("clientJpaProps") JpaProperties jpaProperties) {
         return new EntityManagerFactoryBuilder(new HibernateJpaVendorAdapter(), jpaProperties.get(), persistenceUnitManager.getIfAvailable());
     }
 
-    @Bean("accountPMT")
+    @Bean("clientPMT")
     @Primary
-    PersistenceManagedTypes accountPMT(ResourceLoader resourceLoader) {
+    PersistenceManagedTypes clientPMT(ResourceLoader resourceLoader) {
         return new PersistenceManagedTypesScanner(resourceLoader)
-                .scan("prot.graalvm.tr.account");
+                .scan("prot.graalvm.tr.client");
     }
 
-    @Bean(name = ACCOUNT_ENTITY_MANAGER_FACTORY)
+    @Bean(name = CLIENT_ENTITY_MANAGER_FACTORY)
     @Primary
-    LocalContainerEntityManagerFactoryBean accountEntityManagerFactory(
-            @Qualifier("account-db.data-source") DataSource ds
-            , @Qualifier("accountEMFB") EntityManagerFactoryBuilder emfBuilder
-            , @Qualifier("accountPMT") PersistenceManagedTypes persistenceManagedTypes
+    LocalContainerEntityManagerFactoryBean clientEntityManagerFactory(
+            @Qualifier("client-db.data-source") DataSource ds
+            , @Qualifier("clientEMFB") EntityManagerFactoryBuilder emfBuilder
+            , @Qualifier("clientPMT") PersistenceManagedTypes persistenceManagedTypes
             ) {
         return emfBuilder.dataSource(ds)
-                .packages(Account.class)
+                .packages(Client.class)
                 .managedTypes(persistenceManagedTypes)
                 .build();
         /*
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(ds);
-        em.setPackagesToScan("prot.graalvm.tr.account");
+        em.setPackagesToScan("prot.graalvm.tr.client");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
 
@@ -101,14 +101,14 @@ public class AccountDatabaseConfig {
          */
     }
 
-    @Bean(name = ACCOUNT_TRANSACTION_MANAGER)
+    @Bean(name = CLIENT_TRANSACTION_MANAGER)
     @Primary
-    public TransactionManager accountTransactionManager(@Qualifier(ACCOUNT_ENTITY_MANAGER_FACTORY) LocalContainerEntityManagerFactoryBean accountEntityManagerFactory) {
-        EntityManagerFactory emf = accountEntityManagerFactory.getObject();
+    public TransactionManager clientTransactionManager(@Qualifier(CLIENT_ENTITY_MANAGER_FACTORY) LocalContainerEntityManagerFactoryBean clientEntityManagerFactory) {
+        EntityManagerFactory emf = clientEntityManagerFactory.getObject();
         if (emf != null) {
             return new JpaTransactionManager(emf);
         } else {
-            throw new NullPointerException("account entity-manager-factory cannot be null");
+            throw new NullPointerException("client entity-manager-factory cannot be null");
             // return null;
         }
     }
