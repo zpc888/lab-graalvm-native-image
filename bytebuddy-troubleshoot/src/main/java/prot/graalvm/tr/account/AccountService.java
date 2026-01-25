@@ -21,4 +21,16 @@ public class AccountService {
     public Optional<Account> getById(Long id) {
         return repository.findById(id);
     }
+
+    public Optional<Account> updateType(Long id, String accountType) {
+        int ret = repository.updateAccountTypeById(id, accountType);
+        if (ret == 1) {
+            return repository.findById(id);
+        }
+        return Optional.empty();
+    }
+
+    public Iterable<Account> listAllAccounts() {
+        return repository.findAll();
+    }
 }

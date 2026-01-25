@@ -1,0 +1,16 @@
+[
+  {
+    "name": "prot.graalvm.tr.account.Account",
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true
+  },
+  {
+    "name": "prot.graalvm.tr.account.AccountRepository",
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "org.hibernate.proxy.HibernateProxy",
+    "allDeclaredMethods": true
+  }
+]

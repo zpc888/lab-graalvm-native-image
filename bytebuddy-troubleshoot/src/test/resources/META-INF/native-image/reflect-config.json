@@ -1,0 +1,8 @@
+[
+  {
+    "name": "prot.graalvm.tr.account.Account",
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true
+  }
+]

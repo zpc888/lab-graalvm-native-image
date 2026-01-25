@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/accounts")
@@ -28,10 +29,25 @@ public class AccountController {
         return ResponseEntity.created(location).body(saved);
     }
 
+    @GetMapping
+    public ResponseEntity<Iterable<Account>> listAllAccounts() {
+        Iterable<Account> all = service.listAllAccounts();
+        return ResponseEntity.ok(all);
+    }
+
+    @PatchMapping(path = "/{id}")
+    public ResponseEntity<Account> updateType(@PathVariable Long id,
+                                              @RequestParam(name = "accountType") String accountType) {
+        Optional<Account> saved = service.updateType(id, accountType);
+        return saved.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Account> getById(@PathVariable Long id) {
         return service.getById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
 }

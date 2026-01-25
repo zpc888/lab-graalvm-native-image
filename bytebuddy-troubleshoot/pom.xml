@@ -5,7 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.10</version>
+		<version>3.3.13</version>
+<!--		<version>3.5.10</version>-->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>prot.graalvm</groupId>
@@ -82,6 +83,7 @@
 				<artifactId>native-maven-plugin</artifactId>
 				<configuration>
 					<imageName>bytebuddy-troubleshoot-native</imageName>
+					<mainClass>prot.graalvm.tr.BytebuddyTroubleshootApplication</mainClass>
 					<buildArgs>
 						<buildArg>--no-fallback</buildArg>
 						<buildArgs>-H:+AddAllCharsets</buildArgs>
