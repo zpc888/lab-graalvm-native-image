@@ -1,3 +1,5 @@
 [
-  ["java.util.function.Consumer"]
+  {
+    "interfaces":["java.util.function.Consumer"]
+  }
 ]
