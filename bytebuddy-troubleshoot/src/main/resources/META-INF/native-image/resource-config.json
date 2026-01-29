@@ -1,0 +1,16 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "reflect-A-resource.txt"
+      },
+      {
+        "pattern": "reflect-B-resource.txt"
+      },
+      {
+        "pattern": "reflect-C-resource.txt"
+      }
+    ]
+  },
+  "bundles": []
+}

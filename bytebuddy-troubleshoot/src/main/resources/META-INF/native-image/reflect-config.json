@@ -1,0 +1,64 @@
+[
+  {
+    "name": "prot.graalvm.tr.dynamic.reflect.DemoAImpl",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "invoke",
+        "parameterTypes": ["java.util.List"]
+      },
+      {
+        "name": "loadResource",
+        "parameterTypes": ["java.lang.String"]
+      }
+    ]
+  },
+  {
+    "name": "prot.graalvm.tr.dynamic.reflect.DemoBImpl",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "invoke",
+        "parameterTypes": ["java.util.List"]
+      },
+      {
+        "name": "loadResource",
+        "parameterTypes": ["java.lang.String"]
+      }
+    ]
+  },
+  {
+    "name": "prot.graalvm.tr.dynamic.reflect.DemoCImpl",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "invoke",
+        "parameterTypes": ["java.util.List"]
+      },
+      {
+        "name": "loadResource",
+        "parameterTypes": ["java.lang.String"]
+      }
+    ]
+  },
+
+  {
+    "name": "prot.graalvm.tr.dynamic.conditional.ConditionalAService",
+    "queryAllPublicConstructors": true,
+    "queryAllPublicMethods": true
+  },
+  {
+    "name": "prot.graalvm.tr.dynamic.conditional.ConditionalBService",
+    "queryAllPublicConstructors": true,
+    "queryAllPublicMethods": true
+  }
+]

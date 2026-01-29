@@ -78,3 +78,22 @@ Content-Type: application/json
 GET http://localhost:8083/diagnostic/emf-info
 
 <> 2026-01-25T014435.200.json
+
+###
+GET http://localhost:8083/dynamic/reflect-demo
+
+###
+GET http://localhost:8083/dynamic/reflect-demo?fqn=prot.graalvm.tr.dynamic.reflect.DemoAImpl
+
+###
+GET http://localhost:8083/dynamic/reflect-demo?fqn=prot.graalvm.tr.dynamic.reflect.DemoBImpl
+
+###
+GET http://localhost:8083/dynamic/reflect-demo?fqn=prot.graalvm.tr.dynamic.reflect.DemoCImpl
+
+###
+GET http://localhost:8083/dynamic/conditional-service
+
+###
+GET http://localhost:8083/dynamic/class-initialization-time
+
