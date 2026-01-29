@@ -18,12 +18,15 @@ import java.util.*;
 @RestController
 @RequestMapping("/dynamic")
 public class DynamicController {
-    private final ConditionalService conditionalService;
+    private final Conditional1Service conditional1Service;
+    private final Conditional2Service conditional2Service;
     private final String conditionalServiceSelector;
 
-    public DynamicController(@Autowired ConditionalService conditionalService
-            , @Value("${app.conditional.service:}") String whichOne) {
-        this.conditionalService = conditionalService;
+    public DynamicController(@Autowired Conditional1Service conditionalService,
+                             @Autowired Conditional2Service conditional2Service,
+                             @Value("${app.conditional.service:}") String whichOne) {
+        this.conditional1Service = conditionalService;
+        this.conditional2Service = conditional2Service;
         this.conditionalServiceSelector = whichOne;
     }
 
@@ -75,7 +78,8 @@ public class DynamicController {
     public ResponseEntity<Map<String, String>> conditionalService() {
         Map<String, String> ret = new LinkedHashMap<>();
         ret.put("prop-value", conditionalServiceSelector);
-        ret.put("bean-result", conditionalService.service());
+        ret.put("conditional-1-bean-result", conditional1Service.service());
+        ret.put("another-conditional-2-bean-result", conditional2Service.service());
         return ResponseEntity.ok(ret);
     }
 

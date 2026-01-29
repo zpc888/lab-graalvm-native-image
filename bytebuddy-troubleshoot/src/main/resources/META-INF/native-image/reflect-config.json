@@ -18,47 +18,33 @@
   },
   {
     "name": "prot.graalvm.tr.dynamic.reflect.DemoBImpl",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      },
-      {
-        "name": "invoke",
-        "parameterTypes": ["java.util.List"]
-      },
-      {
-        "name": "loadResource",
-        "parameterTypes": ["java.lang.String"]
-      }
-    ]
+    "allPublicFields": true,
+    "allDeclaredFields": true,
+    "queryAllPublicConstructors": true,
+    "queryAllDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true,
+    "queryAllPublicMethods": true,
+    "queryAllDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredClasses": true
   },
   {
     "name": "prot.graalvm.tr.dynamic.reflect.DemoCImpl",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      },
-      {
-        "name": "invoke",
-        "parameterTypes": ["java.util.List"]
-      },
-      {
-        "name": "loadResource",
-        "parameterTypes": ["java.lang.String"]
-      }
-    ]
+    "allPublicMethods": true,
+    "allPublicConstructors": true
   },
 
   {
-    "name": "prot.graalvm.tr.dynamic.conditional.ConditionalAService",
-    "queryAllPublicConstructors": true,
-    "queryAllPublicMethods": true
+    "name": "prot.graalvm.tr.dynamic.conditional1.ConditionalAService",
+    "allPublicMethods": true,
+    "allPublicConstructors": true
   },
   {
-    "name": "prot.graalvm.tr.dynamic.conditional.ConditionalBService",
-    "queryAllPublicConstructors": true,
-    "queryAllPublicMethods": true
+    "name": "prot.graalvm.tr.dynamic.conditional2.ConditionalBService",
+    "allPublicMethods": true,
+    "allPublicConstructors": true
   }
 ]
